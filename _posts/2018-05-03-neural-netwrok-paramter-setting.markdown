@@ -19,7 +19,7 @@ description: 全连接层参数设置总结
 
 ## 背景概要
 
-最近再用神经网络（只有全连接层）学习数据库索引，调参的问题困扰了很久，在此总结各个参数（batch_size、learning_rate、 core_size、 layer_size等）对于学习过程的影响，以做参考。
+最近在用神经网络（只有全连接层）学习数据库索引，调参的问题困扰了很久，在此总结各个参数（batch_size、learning_rate、 core_size、 layer_size等）对于学习过程的影响，以做参考。
 
 学习的目标是一维的数据对应一维的输出，相当于key-value模型，本质是在学习一维数据集合的分布模型。
 
