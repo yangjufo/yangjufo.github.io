@@ -6,7 +6,6 @@ image: /assets/images/markdown.jpg
 headerImage: false
 tag:
 - 机器学习
-- 神经网络
 category: blog
 author: Jian Yang
 description: 全连接层参数设置总结
