@@ -1,5 +1,5 @@
 # main text of home
-name: Eric Young
+name: Skywalker Young
 bio: A man who is always on the way.
 
 # twitter summary info
@@ -55,7 +55,7 @@ email: yangjufo@gmail.com
 
 authors:
     johndoe:
-        name: Eric Young 
+        name: Skywalker Young 
         bio: A man who is always on the way.
         external-image: false
         picture: assets/images/profile.jpg
