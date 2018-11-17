@@ -32,7 +32,7 @@ class BlockStore(rpyc.Service):
     method as an RPC call
     """
     def exposed_store_block(self, h, block):        
-        logger.info("store block: " + str(h))
+        self.logger.info("store block: " + str(h))
         self.hash_blocks[h] = block
         return True
         
@@ -45,7 +45,7 @@ class BlockStore(rpyc.Service):
     method as an RPC call
     """
     def exposed_get_block(self, h):
-        logger.info("get block: " + str(h))
+        self.logger.info("get block: " + str(h))
         return self.hash_blocks[h]
 
     """
@@ -56,7 +56,7 @@ class BlockStore(rpyc.Service):
     method as an RPC call
     """
     def exposed_has_block(self, h):
-        logger.info("has block: " + str(h))
+        self.logger.info("has block: " + str(h))
         return h in self.hash_blocks
 		
 if __name__ == '__main__':
