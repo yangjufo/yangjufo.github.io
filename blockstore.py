@@ -1,5 +1,6 @@
 import rpyc
 import sys
+import logging
 
 """
 The BlockStore service is an in-memory data store that stores blocks of data,
@@ -15,6 +16,13 @@ class BlockStore(rpyc.Service):
     """
     def __init__(self):
         self.hash_blocks = {}        
+        self.logger = logging.getLogger('blockstore')
+        hdlr = logging.FileHandler('blockstore.log')
+        formatter = logging.Formatter('%(asctime)s %levelname)s %(message)s')
+        hdlr.setFormatter(formatter)
+        self.logger.addHandler(hdlr)
+        self.logger.setLevel(logging.WARNING)
+
 
     """
     store_block(h, b) : Stores block b in the key-value store, indexed by
@@ -24,6 +32,7 @@ class BlockStore(rpyc.Service):
     method as an RPC call
     """
     def exposed_store_block(self, h, block):        
+        logger.info("store block: " + str(h))
         self.hash_blocks[h] = block
         return True
         
@@ -35,7 +44,8 @@ class BlockStore(rpyc.Service):
     As per rpyc syntax, adding the prefix 'exposed_' will expose this
     method as an RPC call
     """
-    def exposed_get_block(self, h):        
+    def exposed_get_block(self, h):
+        logger.info("get block: " + str(h))
         return self.hash_blocks[h]
 
     """
@@ -45,7 +55,8 @@ class BlockStore(rpyc.Service):
     As per rpyc syntax, adding the prefix 'exposed_' will expose this
     method as an RPC call
     """
-    def exposed_has_block(self, h):        
+    def exposed_has_block(self, h):
+        logger.info("has block: " + str(h))
         return h in self.hash_blocks
 		
 if __name__ == '__main__':
